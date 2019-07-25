@@ -10,7 +10,7 @@ def glSceneInitialize(objectdir, w, h, fov, fardistance):
 
 	pygame.init()
 	display = (w, h)
-	pygame.display.set_mode(display, DOUBLEBUF | OPENGL)
+	window = pygame.display.set_mode(display, DOUBLEBUF | OPENGL)
 
 	gluPerspective(fov, w/h, 0.1, fardistance)
 
@@ -31,14 +31,14 @@ def glSceneInitialize(objectdir, w, h, fov, fardistance):
 	glMatrixMode(GL_MODELVIEW)
 	glEnable(GL_DEPTH_TEST)
 
-	return myobj
+	return window, myobj
 
 def setCameraLookAt(x, y, z, lx, ly, lz):
 	gluLookAt(x, y, z, lx, ly, lz, 0, 1, 0) #0, 1, 0 - positive vertical oriented vector coordinates
 
 def main():
 
-	obj = glSceneInitialize("untitled.obj", 800, 600, 60, 50.0)
+	window, obj = glSceneInitialize("untitled.obj", 800, 600, 60, 50.0)
 
 	#KeyPress states for PyGame
 	shift_pressed = False
@@ -54,7 +54,13 @@ def main():
 	y_rot = 0
 	z_rot = 0
 
-	while True:
+	setCameraLookAt(0, 0, 5, 0, 0, 0)
+	obj.draw()
+	pygame.image.save(window, "test.png")
+
+	k = 0
+	while k == 0:
+		k+= 1
 	
 		for event in pygame.event.get():
 
@@ -130,6 +136,7 @@ def main():
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 		obj.draw()
+
 
 		pygame.display.flip()
 		pygame.time.wait(5)
