@@ -1,4 +1,5 @@
-from pygame.image import load, tostring
+from PIL import Image
+import numpy as np
 from OpenGL.GL import *
 
 def MTL(filename):
@@ -23,10 +24,11 @@ def MTL(filename):
     
             # load the texture referred to by this declaration
             mtl[values[0]] = values[1]
-            surf = load(mtl['map_Kd'])
-    
-            image = tostring(surf, 'RGBA', 1)
-            ix, iy = surf.get_rect().size
+
+            surf = Image.open(mtl['map_Kd']).convert("RGBA")
+            img = np.fromstring(surf.tobytes(), np.uint8)
+            ix, iy = surf.size
+
             texid = mtl['texture_Kd'] = glGenTextures(1)
     
             glBindTexture(GL_TEXTURE_2D, texid)
@@ -35,9 +37,10 @@ def MTL(filename):
     
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
                 GL_LINEAR)
-    
+
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, ix, iy, 0, GL_RGBA,
-                GL_UNSIGNED_BYTE, image)
+                GL_UNSIGNED_BYTE, img)
+
         else:
             mtl[values[0]] = tuple([float(i) for i in values[1:]])
 
