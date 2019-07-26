@@ -1,5 +1,4 @@
 import pygame
-#from pygame.locals import *
 
 from OpenGL.GL import *
 from OpenGL.GLU import *
@@ -35,7 +34,7 @@ def glSceneInitialize(objectdir, w, h, fov, fardistance):
 	return window, myobj
 
 def setCameraLookAt(x, z, y, lx, lz, ly):
-    gluLookAt(x, y, z, lx, ly, lz, 0, 1, 0) #0, 1, 0 - positive vertical oriented vector coordinates
+	gluLookAt(x, y, z, lx, ly, lz, 0, 1, 0) #0, 1, 0 - positive vertical oriented vector coordinates
 
 def load(objectdir, outputdir, width, height, camerapos, cameralookat, fov=75, fardistance=60):
 
@@ -51,10 +50,8 @@ def load(objectdir, outputdir, width, height, camerapos, cameralookat, fov=75, f
 	pygame.display.flip()
 	pygame.time.wait(5)
 
-
 def main():
-
-    load("untitled.obj", "test.png", 800, 600, (2, 3, 1), (1, -1, 0), 75)
+	load("untitled.obj", "test.png", 800, 600, (2, 3, 1), (1, -1, 0), 75)
 
 
 main()
