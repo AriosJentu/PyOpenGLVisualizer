@@ -1,4 +1,4 @@
-import pygame
+from pygame.image import load, tostring
 from OpenGL.GL import *
 
 def MTL(filename):
@@ -23,9 +23,9 @@ def MTL(filename):
     
             # load the texture referred to by this declaration
             mtl[values[0]] = values[1]
-            surf = pygame.image.load(mtl['map_Kd'])
+            surf = load(mtl['map_Kd'])
     
-            image = pygame.image.tostring(surf, 'RGBA', 1)
+            image = tostring(surf, 'RGBA', 1)
             ix, iy = surf.get_rect().size
             texid = mtl['texture_Kd'] = glGenTextures(1)
     
@@ -121,6 +121,13 @@ class OBJ:
         glEnable(GL_TEXTURE_2D)
         glFrontFace(GL_CCW)
 
+        self.generateList()
+
+        glDisable(GL_TEXTURE_2D)
+        glEndList()
+
+    def generateList(self):
+
         for face in self.faces:
             vertices, normals, texture_coords, material = face
 
@@ -147,9 +154,6 @@ class OBJ:
                 glVertex3fv(self.vertices[vertices[i] - 1])
             
             glEnd()
-
-        glDisable(GL_TEXTURE_2D)
-        glEndList()
 
     def draw(self):
         glCallList(self.gl_list)
