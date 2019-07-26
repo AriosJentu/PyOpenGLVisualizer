@@ -1,5 +1,5 @@
 import pygame
-from pygame.locals import *
+#from pygame.locals import *
 
 from OpenGL.GL import *
 from OpenGL.GLU import *
@@ -34,23 +34,27 @@ def glSceneInitialize(objectdir, w, h, fov, fardistance):
 
 	return window, myobj
 
-def setCameraLookAt(x, y, z, lx, ly, lz):
-	gluLookAt(x, y, z, lx, ly, lz, 0, 1, 0) #0, 1, 0 - positive vertical oriented vector coordinates
+def setCameraLookAt(x, z, y, lx, lz, ly):
+    gluLookAt(x, y, z, lx, ly, lz, 0, 1, 0) #0, 1, 0 - positive vertical oriented vector coordinates
+
+def load(objectdir, outputdir, width, height, camerapos, cameralookat, fov=75, fardistance=60):
+
+	window, obj = glSceneInitialize(objectdir, width, height, fov, fardistance)
+
+	setCameraLookAt(*camerapos, *cameralookat)
+
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+	
+	obj.draw()
+	pygame.image.save(window, outputdir)
+
+	pygame.display.flip()
+	pygame.time.wait(5)
 
 
 def main():
 
-	window, obj = glSceneInitialize("untitled.obj", 800, 600, 60, 50.0)
-
-	setCameraLookAt(0, 0, 5, 0, 0, 0)
-
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-
-	obj.draw()
-	pygame.image.save(window, "test.png")
-
-	pygame.display.flip()
-	pygame.time.wait(5)
+    load("untitled.obj", "test.png", 800, 600, (2, 3, 1), (1, -1, 0), 75)
 
 
 main()

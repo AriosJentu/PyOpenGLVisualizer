@@ -25,7 +25,7 @@ def glSceneInitialize(objectdir, w, h, fov, fardistance):
     glLoadIdentity()
 
     #Load object    
-    myobj = obj.OBJ("untitled.obj", False)
+    myobj = obj.OBJ(objectdir, False)
 
     glMatrixMode(GL_MODELVIEW)
     glEnable(GL_DEPTH_TEST)
