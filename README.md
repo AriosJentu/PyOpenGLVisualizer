@@ -10,7 +10,7 @@ Original object location puts in file *header.txt*, another tests parameters put
 
 3. Run tester program using next syntax:  
 `python tester.py USERMODELDIR REMOVEAFTER`  
-where **USERMODELDIR** is location of user model (if it has material, *.mat* file need to be called same as *.obj*), and **REMOVEAFTER** is boolean value (0 or 1), which telling program that after execution test, remove render images.
+where **USERMODELDIR** is location of user model (if it has material, *.mat* file need to be called same as *.obj*), and **REMOVEAFTER** is boolean value (0 or 1), which telling program that after execution test, remove render images *(default 1)*.
 
 ## Header and test files syntax
 1. Header's filename is `header.txt`.
@@ -32,6 +32,9 @@ Where
 - **TEXTURED** - can be 0 or 1, means render model with (1) or without (0) texture (*default 1*),  
 - **FOV** - camera field of view (*default is 75*),  
 - **DRAWDISTANCE** - distance of model visibility (*default - 60*)  
+
+### Note
+**X**, **Y** and **Z** is not inversed like in OpenGL. **X** axis is horizontal axis *(from left to right)*, **Y** axis is perpendicular to monitor *(from **viewer** to **monitor**)*, and **Z** axis is vertical axis *(from bottom to top)*.
 
 [Example 1](test1.txt), [Example 2](test2.txt), ...
 
