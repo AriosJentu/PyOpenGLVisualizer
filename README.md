@@ -35,9 +35,9 @@ Where
 [Example 1](test1.txt), [Example 2](test2.txt), ...
 
 ## Requirements
-- *OpenGL* - OpenGL library *(pip package - `PyOpenGL`, `PyOpenGL-accelerate`)*
-- *glfw* - Library for visualization OpenGL (render) *(pip package - `glfw`)*
-- *cv2* - Library for work with images in OpenGL and for comparing *(pip package - `opencv-python`)*
-- *numpy* - NumPy *(pip package - `numpy`)*
-- *PIL.Image* - Library for comparing images *(pip package - `Pillow`)*
+- `OpenGL` - OpenGL library *(pip package - `PyOpenGL`, `PyOpenGL-accelerate`)*
+- `glfw` - Library for visualization OpenGL (render) *(pip package - `glfw`)*
+- `cv2` - Library for work with images in OpenGL and for comparing *(pip package - `opencv-python`)*
+- `numpy` - NumPy *(pip package - `numpy`)*
+- `PIL.Image` - Library for comparing images *(pip package - `Pillow`)*
 
