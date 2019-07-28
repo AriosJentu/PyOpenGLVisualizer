@@ -1,2 +1,2 @@
-../objects/untitled.obj
+objects/untitled.obj
 ORIGMIDEL

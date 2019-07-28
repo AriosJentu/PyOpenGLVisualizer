@@ -4,7 +4,7 @@ import sys
 from visualizer_glfw import load
 from comparator import compare
 
-TESTS_FOLDER = "../tests/"
+TESTS_FOLDER = "tests/"
 
 def readHeader():
 	with open(TESTS_FOLDER+"header.txt") as header:
@@ -30,8 +30,8 @@ def executeTests(userobjdir, rmafter=True, testexec=lambda dif: print(dif)):
 	while path.isfile(TESTS_FOLDER+"test"+testindex+".txt"):
 		testvals = readTest(testindex)
 
-		imgorig = "../renders/imgorig"+testindex+".png"
-		imguser = "../renders/imguser"+testindex+".png"
+		imgorig = "renders/imgorig"+testindex+".png"
+		imguser = "renders/imguser"+testindex+".png"
 
 		load(testobjdir, imgorig, *testvals)
 		load(userobjdir, imguser, *testvals)
