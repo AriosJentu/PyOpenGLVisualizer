@@ -71,7 +71,7 @@ class OBJ:
                 if swapyz:
                     v[1], v[2] = v[2], v[1]
 
-                print("Verticies", len(tuple(v)), tuple(v))
+                # print("Verticies", len(tuple(v)), tuple(v))
                 self.vertices.append(tuple(v))
             
             elif values[0] == 'vn':
@@ -80,13 +80,13 @@ class OBJ:
                 if swapyz:
                     v[1], v[2] = v[2], v[1]
 
-                print("Normals", len(tuple(v)), tuple(v))
+                # print("Normals", len(tuple(v)), tuple(v))
                 self.normals.append(tuple(v))
            
             elif values[0] == 'vt':
 
                 v = [float(i) for i in values[1:3]]
-                print("Textures", len(tuple(v)), tuple(v))
+                # print("Textures", len(tuple(v)), tuple(v))
                 self.texcoords.append(tuple(v))
             
             elif values[0] in ('usemtl', 'usemat'):

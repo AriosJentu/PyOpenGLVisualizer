@@ -8,7 +8,7 @@ def compare(img1, img2):
 	if (i1.mode != i2.mode):
 		print("Different kinds of images.")
 
-	if (i1.size == i2.size):
+	if (i1.size != i2.size):
 		print("Different sizes.")
  
 	pairs = zip(i1.getdata(), i2.getdata())
@@ -21,8 +21,6 @@ def compare(img1, img2):
 	 
 	ncomponents = i1.size[0] * i1.size[1] * 3
 	percentage = (dif/255) * (100/ncomponents)
-	print("Difference (percentage):", percentage, ncomponents, dif)
+	#print("Difference (percentage):", percentage, ncomponents, dif)
+	
 	return percentage
-
-if __name__ == "__main__":
-	compare("image.png", "image2.png")
