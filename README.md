@@ -10,7 +10,9 @@ Original object location puts in file *header.txt*, another tests parameters put
 
 3. Run tester program using next syntax:  
 `./run USERMODELLOCATION REMOVEAFTER`  
-where **USERMODELLOCATION** is location of user model (if it has material, *.mat* file need to be called same as *.obj*), and **REMOVEAFTER** is boolean value (0 or 1), which telling program that after execution test, remove render images *(default 1)*.  
+Where  
+- **USERMODELLOCATION** is location of user model (if it has material, *.mat* file need to be called same as *.obj*)  
+- **REMOVEAFTER** is boolean value (0 or 1), which telling program that after execution test, remove render images *(default 1)*  
 By default, renders saving in `renders` directory.
 
 ## Header and test files syntax
