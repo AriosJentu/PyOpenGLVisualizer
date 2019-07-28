@@ -15,8 +15,9 @@ def readTest(index):
 		size = tuple(map(int, line[:2]))
 		campos = [tuple(map(float, line[2:5]))]
 		camlook = [tuple(map(float, line[5:8]))]
-		floats = tuple(map(float, line[8:]))
-		return size + tuple(campos) + tuple(camlook) + floats
+		withtexture = (bool(int(line[8])), )
+		floats = tuple(map(float, line[9:]))
+		return size + tuple(campos) + tuple(camlook) + withtexture + floats
 
 def executeTests(userobjdir, rmafter=True, testexec=lambda dif: print(dif)):
 
