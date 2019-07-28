@@ -32,6 +32,7 @@ Where
 - **TEXTURED** - can be 0 or 1, means render model with (1) or without (0) texture (*default 1*),  
 - **FOV** - camera field of view (*default is 75*),  
 - **DRAWDISTANCE** - distance of model visibility (*default - 60*)  
+
 [Example 1](test1.txt), [Example 2](test2.txt), ...
 
 ## Requirements
