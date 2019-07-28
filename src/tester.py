@@ -1,4 +1,4 @@
-from os import path, remove
+from os import path, remove, mkdir
 import sys
 
 from visualizer_glfw import load
@@ -29,6 +29,9 @@ def executeTests(userobjdir, rmafter=True, testexec=lambda dif: print(dif)):
 	difs = []
 	while path.isfile(TESTS_FOLDER+"test"+testindex+".txt"):
 		testvals = readTest(testindex)
+
+		if not path.isdir("renders"):
+			mkdir("renders")
 
 		imgorig = "renders/imgorig"+testindex+".png"
 		imguser = "renders/imguser"+testindex+".png"
