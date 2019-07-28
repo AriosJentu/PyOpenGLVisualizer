@@ -6,7 +6,7 @@ import glfw
 
 import obj
 
-def glSceneInitialize(objectdir, w, h, fov, fardistance):
+def glSceneInitialize(objectdir, w, h, fov, fardistance, withtexture=True):
 
 	gluPerspective(fov, w/h, 0.1, fardistance)
 
@@ -22,7 +22,7 @@ def glSceneInitialize(objectdir, w, h, fov, fardistance):
 	glLoadIdentity()
 
 	#Load object    
-	myobj = obj.OBJ(objectdir, False)
+	myobj = obj.OBJ(objectdir, False, withtexture)
 
 	glMatrixMode(GL_MODELVIEW)
 	glEnable(GL_DEPTH_TEST)
@@ -32,7 +32,7 @@ def glSceneInitialize(objectdir, w, h, fov, fardistance):
 def setCameraLookAt(x, z, y, lx, lz, ly):
 	gluLookAt(x, y, z, lx, ly, lz, 0, -1, 0) #0, -1, 0 - inverse positive vertical oriented vector coordinates
 
-def load(objectdir, outputdir, width, height, camerapos, cameralookat, fov=75, fardistance=60):
+def load(objectdir, outputdir, width, height, camerapos, cameralookat, withtexture=True, fov=75, fardistance=60):
 
 	# Initialize the library
 	if not glfw.init():
@@ -51,7 +51,7 @@ def load(objectdir, outputdir, width, height, camerapos, cameralookat, fov=75, f
 	glfw.make_context_current(window)
 
 	# Initialize object and camera
-	myobj = glSceneInitialize(objectdir, width, height, fov, fardistance)
+	myobj = glSceneInitialize(objectdir, width, height, fov, fardistance, withtexture)
 	setCameraLookAt(*camerapos, *cameralookat)
 
 	# Empty scene

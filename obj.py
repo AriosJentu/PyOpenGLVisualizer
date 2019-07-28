@@ -2,7 +2,7 @@ from PIL import Image
 import numpy as np
 from OpenGL.GL import *
 
-def MTL(filename):
+def MTL(filename, withtextures=True):
 
     contents = {}
     mtl = None
@@ -25,21 +25,23 @@ def MTL(filename):
             # load the texture referred to by this declaration
             mtl[values[0]] = values[1]
 
-            surf = Image.open(mtl['map_Kd']).convert("RGBA")
-            img = np.fromstring(surf.tobytes(), np.uint8)
-            ix, iy = surf.size
+            if withtextures:
 
-            texid = mtl['texture_Kd'] = glGenTextures(1)
-    
-            glBindTexture(GL_TEXTURE_2D, texid)
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
-                GL_LINEAR)
-    
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
-                GL_LINEAR)
+                surf = Image.open(mtl['map_Kd']).convert("RGBA")
+                img = np.fromstring(surf.tobytes(), np.uint8)
+                ix, iy = surf.size
 
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, ix, iy, 0, GL_RGBA,
-                GL_UNSIGNED_BYTE, img)
+                texid = mtl['texture_Kd'] = glGenTextures(1)
+        
+                glBindTexture(GL_TEXTURE_2D, texid)
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
+                    GL_LINEAR)
+        
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
+                    GL_LINEAR)
+
+                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, ix, iy, 0, GL_RGBA,
+                    GL_UNSIGNED_BYTE, img)
 
         else:
             mtl[values[0]] = tuple([float(i) for i in values[1:]])
@@ -47,7 +49,7 @@ def MTL(filename):
     return contents
 
 class OBJ:
-    def __init__(self, filename, swapyz=False):
+    def __init__(self, filename, swapyz=False, withtextures=True):
         """Loads a Wavefront OBJ file. """
         self.vertices = []
         self.normals = []
@@ -93,7 +95,7 @@ class OBJ:
                 material = values[1]
             
             elif values[0] == 'mtllib':
-                self.mtl = MTL(values[1])
+                self.mtl = MTL(values[1], withtextures)
             
             elif values[0] == 'f':
                 face = []
