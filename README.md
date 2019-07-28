@@ -9,21 +9,21 @@ Recommend to use [Blender 3D](https://www.blender.org/). Export models in *.obj*
 Original object location puts in file *header.txt*, another tests parameters puts in *test**K**.txt*, where **K** is index of test. Numeration starts from 1, and if next index not found, testing will be finished.
 
 3. Run tester program using next syntax:  
-`./run USERMODELDIR REMOVEAFTER`  
-where **USERMODELDIR** is location of user model (if it has material, *.mat* file need to be called same as *.obj*), and **REMOVEAFTER** is boolean value (0 or 1), which telling program that after execution test, remove render images *(default 1)*.  
+`./run USERMODELLOCATION REMOVEAFTER`  
+where **USERMODELLOCATION** is location of user model (if it has material, *.mat* file need to be called same as *.obj*), and **REMOVEAFTER** is boolean value (0 or 1), which telling program that after execution test, remove render images *(default 1)*.  
 By default, renders saving in `renders` directory.
 
 ## Header and test files syntax
 This files all located in directory `tests`.
 1. Header's filename is `header.txt`.
-Header file contains only original object location:  
+Header file containing only location of original object:  
 ```
 location/filename.obj
 ```  
 [Example](tests/header.txt) (Here **ORIGMODEL** is just a comment)
 
 2. Test's filename is `testK.txt`, where **K** is index of test. Starts from 1, and if file with **K+1** index doesn't exists, testing ends.
-Test's file contains information about camera, render size and texture in next style:  
+Test's file containing information about camera, render size and texture in next style:  
 ```
 WIDTH HEIGHT CAMERA_X CAMERA_Y CAMERA_Z LOOKAT_X LOOKAT_Y LOOKAT_Z TEXTURED FOV DRAWDISTANCE
 ```  
