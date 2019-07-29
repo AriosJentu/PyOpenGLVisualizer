@@ -39,6 +39,8 @@ def executeTests(userobjdir, rmafter=True, onlyobject=False, testexec=lambda dif
 
 		if not onlyobject:
 			load(testobjdir, imgorig, *testvals)
+		else:
+			imguser = "renders/"+path.basename(userobjdir)+"_test"+testindex+".png"
 		
 		load(userobjdir, imguser, *testvals)
 
