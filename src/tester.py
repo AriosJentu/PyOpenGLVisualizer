@@ -56,9 +56,9 @@ def executeTests(userobjdir, rmafter=True, onlyobject=False, testexec=lambda dif
 	return difs
 
 def main(args):
-	def boolarg(i):
-		return bool(int(args[i])) if len(args) > i else True
-	return executeTests(args[1], boolarg(2), boolarg(3))
+	def boolarg(i, default):
+		return bool(int(args[i])) if len(args) > i else bool(default)
+	return executeTests(args[1], boolarg(2, 1), boolarg(3, 0))
 
 if __name__ == "__main__":
 	main(sys.argv)
