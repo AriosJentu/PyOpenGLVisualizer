@@ -17,6 +17,16 @@ Where
 - **REMOVEAFTER** is boolean value (0 or 1), which telling program that after execution test, remove render images *(default 1)*  
 By default, renders saving in `renders` directory.
 
+### Note
+If model has a texture, which is an image file, recommend to put it in same directory, where located model, and use this directory inside model. Reason is - making correct location of texture in *.mtl* in parameter *map_Kd*. For example, directory with object should be looks like this:
+```
+object:
+| - model.obj
+| - model.mtl
+| - texture.png
+```
+
+
 ## Header and test files syntax
 This files all located in directory `tests`.
 1. Header's filename is `header.txt`.
