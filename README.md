@@ -9,7 +9,9 @@ Recommend to use [Blender 3D](https://www.blender.org/). Export models in *.obj*
 Original object location puts in file *header.txt*, another tests parameters puts in *test**K**.txt*, where **K** is index of test. Numeration starts from 1, and if next index not found, testing will be finished.
 
 3. Run tester program using next syntax:  
-`./run USERMODELLOCATION REMOVEAFTER`  
+```
+./run USERMODELLOCATION REMOVEAFTER
+```  
 Where  
 - **USERMODELLOCATION** is location of user model (if it has material, *.mat* file need to be called same as *.obj*)  
 - **REMOVEAFTER** is boolean value (0 or 1), which telling program that after execution test, remove render images *(default 1)*  
