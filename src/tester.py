@@ -21,9 +21,10 @@ def readTest(index):
 		floats = tuple(map(float, line[9:]))
 		return size + tuple(campos) + tuple(camlook) + withtexture + floats
 
-def executeTests(userobjdir, rmafter=True, testexec=lambda dif: print(dif)):
+def executeTests(userobjdir, rmafter=True, onlyobject=False, testexec=lambda dif: print(dif)):
 
-	testobjdir = readHeader()
+	if not onlyobject:
+		testobjdir = readHeader()
 
 	testindex = "1"
 	difs = []
@@ -36,23 +37,28 @@ def executeTests(userobjdir, rmafter=True, testexec=lambda dif: print(dif)):
 		imgorig = "renders/imgorig"+testindex+".png"
 		imguser = "renders/imguser"+testindex+".png"
 
-		load(testobjdir, imgorig, *testvals)
+		if not onlyobject:
+			load(testobjdir, imgorig, *testvals)
+		
 		load(userobjdir, imguser, *testvals)
 
-		dif = compare(imgorig, imguser)
-		difs.append(dif)
-		testexec(dif)
+		if not onlyobject:
+			dif = compare(imgorig, imguser)
+			difs.append(dif)
+			testexec(dif)
 
-		if rmafter:
-			remove(imgorig)
-			remove(imguser)
+			if rmafter:
+				remove(imgorig)
+				remove(imguser)
 
 		testindex = str(int(testindex)+1)
 
 	return difs
 
 def main(args):
-	return executeTests(args[1], bool(int(args[2])) if len(args) > 2 else True)
+	def boolarg(i):
+		return bool(int(args[i])) if len(args) > i else True
+	return executeTests(args[1], boolarg(2), boolarg(3))
 
 if __name__ == "__main__":
 	main(sys.argv)
