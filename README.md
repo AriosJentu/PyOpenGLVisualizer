@@ -17,12 +17,26 @@ Original object location puts in file *header.txt*, another tests parameters put
   - **USERMODELLOCATION** is location of user model (if it has material, *.mat* file need to be called same as *.obj*)  
   - **REMOVEAFTER** is boolean value (0 or 1), which telling program that after execution test, remove render images *(default 1)*  
   - **RENDERONLY** is boolean value (same as previous), which telling program to render model with location **USERMODELLOCATION** without comparing with model in header *(default 0)*  
+  
+  Example:
+  ```
+  ./run objects/testmodel.obj 0
+  ```
+  This example will compare *objects/testmodel.obj* with object inside [header](tests/header.txt) file, and save renders in `renders` folder (without removing them).
 
 * If you want to only render object in arguments, there is another command:
   ```
   ./render USERMODELLOCATION
   ```
   Argument is same as on previous command. This command only makes renders from tests files, and saves them in `render` folder.
+
+  Example:
+  ```
+  ./render objects/testmodel.obj
+  or
+  ./run objects/testmodel.obj 0 1
+  ```
+  This example will render *objects/testmodel.obj* file, and save renders in `renders` folder.
 
 By default, renders saving in `renders` directory.
 
