@@ -37,26 +37,26 @@ object:
 
 
 ## Header and test files syntax
-This files all located in directory `tests`.
+This files all located in directory `tests`.  
 1. Header's filename is `header.txt`.
-  Header file containing only location of original object:  
-  ```
-  location/filename.obj
-  ```  
-  [Example](tests/header.txt) (Here **ORIGMODEL** is just a comment)
+    Header file containing only location of original object:  
+    ```
+    location/filename.obj
+    ```  
+    [Example](tests/header.txt) (Here **ORIGMODEL** is just a comment)
 
 2. Test's filename is `testK.txt`, where **K** is index of test. Starts from 1, and if file with **K+1** index doesn't exists, testing ends.
   Test's file containing information about camera, render size and texture in next style:  
-  ```
-  WIDTH HEIGHT CAMERA_X CAMERA_Y CAMERA_Z LOOKAT_X LOOKAT_Y LOOKAT_Z TEXTURED FOV DRAWDISTANCE
-  ```  
-  Where  
-  - **WIDTH** and **HEIGHT** - render picture size,  
-  - **CAMERA_XYZ** - camera location in scene,  
-  - **LOOKAT_XYZ** - camera focus location, where camera looking at,  
-  - **TEXTURED** - can be 0 or 1, means rendering model *with (1)* or *without (0)* texture (*default 1*),  
-  - **FOV** - camera field of view (*default is 75*),  
-  - **DRAWDISTANCE** - distance of model visibility (*default - 60*)  
+    ```
+    WIDTH HEIGHT CAMERA_X CAMERA_Y CAMERA_Z LOOKAT_X LOOKAT_Y LOOKAT_Z TEXTURED FOV DRAWDISTANCE
+    ```  
+    Where  
+    - **WIDTH** and **HEIGHT** - render picture size,  
+    - **CAMERA_XYZ** - camera location in scene,  
+    - **LOOKAT_XYZ** - camera focus location, where camera looking at,  
+    - **TEXTURED** - can be 0 or 1, means rendering model *with (1)* or *without (0)* texture (*default 1*),  
+    - **FOV** - camera field of view (*default is 75*),  
+    - **DRAWDISTANCE** - distance of model visibility (*default - 60*)  
 
 ### Note
 **X**, **Y** and **Z** is not inversed like in OpenGL. **X** axis is horizontal axis *(from left to right)*, **Y** axis is perpendicular to monitor *(from **viewer** to **monitor**)*, and **Z** axis is vertical axis *(from bottom to top)*.
