@@ -8,13 +8,21 @@ Recommend to use [Blender 3D](https://www.blender.org/). Export models in *.obj*
 2. You need to generate tests. Tests containing original object file location, width and height of render, camera position and coordinates where look at, boolean for rendering with or without textures, FOV, and Draw Distance
 Original object location puts in file *header.txt*, another tests parameters puts in *test**K**.txt*, where **K** is index of test. Numeration starts from 1, and if next index not found, testing will be finished.
 
-3. Run tester program using next syntax:  
+3.1. Run tester program using next syntax:  
 ```
-./run USERMODELLOCATION REMOVEAFTER
+./run USERMODELLOCATION REMOVEAFTER RENDERONLY
 ```  
 Where  
 - **USERMODELLOCATION** is location of user model (if it has material, *.mat* file need to be called same as *.obj*)  
 - **REMOVEAFTER** is boolean value (0 or 1), which telling program that after execution test, remove render images *(default 1)*  
+- **RENDERONLY** is boolean value (same as previous), which telling program to render model with location **USERMODELLOCATION** without comparing with model in header *(default 0)*  
+
+3.2. If you want to only render object in arguments, there is another script, what can do this:
+```
+./render USERMODELLOCATION
+```
+Argument is same as on previous command. This command only makes renders from tests files, and saves them in `render` folder.
+
 By default, renders saving in `renders` directory.
 
 ### Note
