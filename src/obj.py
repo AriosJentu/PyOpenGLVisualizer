@@ -1,15 +1,16 @@
 from PIL import Image
 import numpy as np
 from OpenGL.GL import *
+from os import path
 
 def MTL(filename, withtextures=True):
 
     contents = {}
     mtl = None
 
-    path = "" 
+    fpath = "" 
     if filename.rfind("/") != -1:
-        path = filename[:filename.rfind("/")+1]
+        fpath = filename[:filename.rfind("/")+1]
     
     for line in open(filename, "r"):
     
@@ -28,9 +29,10 @@ def MTL(filename, withtextures=True):
     
             # load the texture referred to by this declaration
             mtl[values[0]] = values[1]
-            
-            if mtl['map_Kd'].rfind("/") == -1:
-                mtl['map_Kd'] = path + mtl['map_Kd']
+
+            if not path.isfile(mtl['map_Kd']):
+                if path.isfile(fpath + mtl['map_Kd']):
+                    mtl['map_Kd'] = fpath + mtl['map_Kd']
 
             if withtextures:
 
